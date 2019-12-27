@@ -82,7 +82,7 @@ function App() {
         {theArray.map((value, index) => {
           return (
             <TicBox
-              setSelectedBox={() => setSelectedBox(index, theArray)}
+              setSelectedBox={() => setSelectedBox(index)}
               value={value}
               key={index}
             />
