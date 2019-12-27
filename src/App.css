@@ -6,7 +6,7 @@
 .box {
   border: 1px solid green;
   flex-grow: 1;
-  width: 33%;
+  width: 30%;
   height: 200px;
   text-align: center;
   line-height: 200px;

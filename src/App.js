@@ -26,8 +26,23 @@ function App() {
     setWinner(null);
   };
 
+  const checkIfBoxesFull = () => {
+    let isNotFull = false;
+
+    [...theArray].forEach(val => {
+      if (val === '') {
+        isNotFull = isNotFull || true;
+      }
+    });
+
+    return isNotFull;
+  };
+
   const setSelectedBox = index => {
-    if (winner) {
+    const isNotFull = checkIfBoxesFull();
+
+    if (winner || !isNotFull) {
+      alert('resetting');
       resetAll();
     } else {
       const arrayCopy = [...theArray];
@@ -67,7 +82,7 @@ function App() {
         {theArray.map((value, index) => {
           return (
             <TicBox
-              setSelectedBox={() => setSelectedBox(index)}
+              setSelectedBox={() => setSelectedBox(index, theArray)}
               value={value}
               key={index}
             />
@@ -75,7 +90,10 @@ function App() {
         })}
       </div>
       {winner ? (
-        <div>{`PLAYER ${winner} WINS`}</div>
+        <div>
+          {`PLAYER ${winner} WINS`}
+          {alert(`PLAYER ${winner} WINS`)}
+        </div>
       ) : (
         <div>{`It's player ${player} turn`}</div>
       )}
